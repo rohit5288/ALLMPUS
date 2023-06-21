@@ -1,0 +1,37 @@
+{% extends 'products/home.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'products/main.css' %}">
+<div class="heading">
+  <p>Welcome To ALLMPUS <br> Laboratories Private Ltd </p>
+</div>
+<div class="about">
+  <h2>We are a Group of Professionals</h2>
+  <p>Allmpus laboratories private limited (Based in India) are in Business for science & innovation, 
+    it is continuously involved in design, research , development with cost effective synthesis and 
+    finding out new techniques of isolation & purification.
+    Our main strength is organic synthesis and analytical chemistry as of this we synthesized 1000+ molecules 
+    in a very brief time, Our R&D center is well equipped for any kind of chemical synthesis and supported 
+    with a project planning team of Ph.D. experienced scientists and chemist.
+  </p>
+</div>
+<div class="container">
+    {% csrf_token %}
+    <div class="row" style="position: absolute;
+                            left: 10%;
+                            display: flex;
+                            flex-wrap: wrap;
+                            padding: 0 4px;
+                            min-height: 700px;">
+      {% for product in product_obj %}  
+      <div class="column" style="flex:22%;
+                                 padding: 0 4px;
+                                 ">
+        <a href="{% url 'product_view' product.id %}"><img src="{{product.img.url}}" width="400" height="500" style="margin-top: 4px;
+                                                                  vertical-align:middle;
+                                                                  border-radius: 10px;"/> </a><br>
+        <p>{{product.product}}</p>
+      </div>
+        {% endfor %}
+    </div>
+{% endblock %}

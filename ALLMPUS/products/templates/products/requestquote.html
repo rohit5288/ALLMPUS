@@ -1,0 +1,48 @@
+{% extends 'users/home.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'products/main.css' %}">
+<style>
+    label{
+        font-size: 20px;
+    }
+    .text-style{
+        width: 30%;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 200;
+        line-height: 30px;
+    }
+</style>
+<div class="container">
+<div class="main-block">
+    <center>
+    <h1>Request Quotation</h1>
+    <form enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      <hr><br><br>
+        <label for="name">NAME:</label><br>
+        <input class="text-style" type="text" name="name" placeholder="Your Name"><br>
+        <label for="email">EMAIL:</label><br>
+        <input class="text-style" type="email" name="email" placeholder="abc@xyz.com"> <br>
+        <label for="contact">CONTACT:</label><br>
+        <input class="text-style" type="text" name="contact"> <br>
+        <label for="company">COMPANY:</label><br>
+        <input class="text-style" type="text" name="company"><br><br>
+        <input type="radio" name="package_unit" value="MG">MG &nbsp;&nbsp;
+        <input type="radio" name="package_unit" value="G">G &nbsp;&nbsp;
+        <input type="radio" name="package_unit" value="KG">KG <br><br>
+        <label for="package">PACKAGE:</label><br>
+        <input class="text-style" type="number" name="package"><br>
+      <br><br>
+      <div class="btn-block">
+          <button type="submit" style="font-family:Georgia, 'Times New Roman', Times, serif; color: white; background-color: #1494fd;">SEND QUERY</button>
+      </div>
+    </form>
+    <div align="center">
+      <h3 style="color: black;"><a href="{{ new_url }}">{{ new_url }}</a></h3>
+    </div>
+    </center>
+  </div>
+</div>
+{% endblock %}
